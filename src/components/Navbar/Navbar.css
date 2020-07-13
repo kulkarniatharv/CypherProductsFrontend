@@ -1,9 +1,12 @@
 .nav {
-  background: #efefef;
+  display: grid;
+  background: #fefefe;
   width: 100%;
   height: 100%;
-  -webkit-box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: -3px 0px 5px 0px #f39f01;
+  box-shadow: -3px 0px 5px 0px #f39f01;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav .title {
@@ -11,8 +14,8 @@
   width: 40px;
   height: 32px;
   position: absolute;
-  top: 50%;
-  transform: rotate(-90deg);
+  top: 40%;
+  /* transform: rotate(-90deg); */
   cursor: pointer;
 }
 
@@ -20,28 +23,81 @@
   /* position values */
   position: absolute;
   width: 50%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  left: -50%;
-  /* left: 0%; */
-
+  height: 100%;
+  left: 0%;
   z-index: 100;
+
+  /* grid values */
+  display: grid;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  transition: transform 600ms ease-out;
+  transform: translateX(-100%);
 }
 
-.menu li {
-  list-style-type: none;
-  text-align: center;
+.menu .menu-links {
+  /* nested grid */
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(5, 2.5rem);
+  font-family: 'FiraSans-Bold';
+  justify-items: stretch;
+  font-size: x-large;
 }
 
-.menu li a {
-  /* display: block; */
+.menu div a {
+  display: block;
   text-decoration: none;
   color: inherit;
   padding-bottom: 1rem;
+  text-align: center;
 }
 
-.menu li a:hover {
-  color: #aaa;
+.menu .menu-links div:hover a {
+  color: #65A4CC;
+  border-top: 5px solid #77C6F6;
+  border-radius: 0.5rem;
+}
+
+.social-banner {
+  position: absolute;
+  top: 80%;
+  left: -2%;
+  transform: rotate(-90deg);
+  z-index: 50;
+  font-family: 'FiraSans-Medium';
+  opacity: 1;
+}
+
+.social-icons {
+  display: grid;
+  position: relative;
+  z-index: 101;
+  opacity: 1;
+}
+
+/* ANIMATIONS for above elements */
+@keyframes fade {
+
+  0%,
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.menu .social-icons {
+  display: grid;
+  position: absolute;
+  z-index: 101;
+}
+
+.menu-close {
+  position: absolute;
+  top: 65%;
+  left: 15%;
 }

@@ -10,12 +10,12 @@
 }
 
 .navbar {
-  background-color: #d3d3d3;
+  background-color: #fefefe;
 }
 
 
 .hero-image {
-  background-color: #d3d3d3;
+  background-color: #b1e0fc;
 }
 
 .products {
@@ -24,19 +24,36 @@
 }
 
 .products>div {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
-.product-item {
-  background-color: #e3e3e3;
+.product-item-1 {
+  background-color: #d7c8eb;
 }
 
-.product-pages {}
+.product-item-2 {
+  background-color: #ffecaf;
+}
 
-.product-trends {}
+.product-item-3 {
+  background-color: #f3f3f5;
+}
+
+.product-item-4 {
+  background-color: #ffd3cf;
+}
+
+
+.product-pages {
+  background-color: #fefefe;
+}
+
+.product-trends {
+  background-color: #f3f3f5;
+}
 
 .cart-info {
-  background-color: #d3d3d3;
+  background-color: #fefefe;
 }
 
 /* Phones and smaller devices */

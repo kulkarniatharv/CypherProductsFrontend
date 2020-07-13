@@ -3,6 +3,25 @@
   src: local('FiraSans'), url(./fonts/FiraSans-Regular.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'FiraSans-Bold';
+  src: local('FiraSans-Bold'), url(./fonts/FiraSans-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'FiraSans-Light';
+  src: local('FiraSans-Light'), url(./fonts/FiraSans-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'FiraSans-Medium';
+  src: local('FiraSans-Medium'), url(./fonts/FiraSans-Medium.ttf) format('truetype');
+}
+
+html {
+  /* overflow: hidden; */
+}
+
 body {
   margin: 0;
   font-family: 'FiraSans', 'Muli', sans-serif;
