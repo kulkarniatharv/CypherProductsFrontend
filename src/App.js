@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import HeroProduct from './components/hero_product/HeroProduct';
+import Product from './components/Products/Products';
 
 const heroImage = require('./images/Hero_image.png');
 
@@ -24,12 +25,7 @@ function App() {
         <HeroProduct />
       </div>
       <div className="products">
-        <div className="product-item-1">Shoe</div>
-        <div className="product-item-2">Shoe</div>
-        <div className="product-item-3">Shoe</div>
-        <div className="product-item-4">Shoe</div>
-        <div className="product-pages">Page Number</div>
-        <div className="product-trends">New Popular</div>
+        <Product />
       </div>
       <div className="cart-info">Cart Info</div>
     </div>

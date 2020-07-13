@@ -1,0 +1,4 @@
+.animate-me:hover {
+  animation: pulse;
+  animation-duration: 1s;
+}
