@@ -1,0 +1,17 @@
+.page-control {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 3fr 1fr;
+  align-items: center;
+
+}
+
+.page-status {
+  text-align: center;
+  font-family: 'FiraSans-Bold';
+  font-size: 4rem;
+}
+
+.control-btn {
+  opacity: 0.8;
+}

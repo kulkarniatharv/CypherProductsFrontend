@@ -1,1 +1,14 @@
-.product-name
+.product-name {
+  position: relative;
+  top: -90%;
+  left: 0%;
+  text-align: center;
+  z-index: 5;
+  cursor: default;
+}
+
+.product-price {
+  position: relative;
+  top: -80%;
+  left: -70%;
+}

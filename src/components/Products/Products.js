@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Product from './Product/Product';
+import PageNumber from './PageNumber/PageNumber';
 
 // importing images
 import P1 from '../../images/p1.png';
@@ -10,7 +11,14 @@ import P4 from '../../images/p4.png';
 const Products = () => {
   const [productsAPI, setProductsAPI] = useState([]);
   const [currPage, setCurrPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
 
+  const [isHoveringP1, setIsHoveringP1] = useState(false);
+  const [isHoveringP2, setIsHoveringP2] = useState(false);
+  const [isHoveringP3, setIsHoveringP3] = useState(false);
+  const [isHoveringP4, setIsHoveringP4] = useState(false);
+
+  // API Requests
   const reqProducts = () => {
     fetch('https://cypher-products-api.herokuapp.com/api', {
       method: 'POST',
@@ -30,60 +38,118 @@ const Products = () => {
     })
       .then(res => res.json())
       .then(json => {
-        setProductsAPI(json.data.products);
-        console.log('Products from API', json.data.products);
+        const jsonData = json.data.products;
+
+        if (jsonData.length / 4 <= 1) {
+          setTotalPages(1);
+        } else {
+          setTotalPages(Math.floor(jsonData.length / 4) + 1);
+        }
+        setProductsAPI(jsonData);
+
+        console.log('Products from API', jsonData);
       })
       .catch(err => console.log(err));
   };
 
-  const OutOfProducts = <div>We're out but we hope you liked something!</div>;
-
   useEffect(reqProducts, []);
+
+  // EVENT HANDLERS
+  const changePageNumber = operation => {
+    if (operation === 'inc') {
+      setCurrPage(currPage + 4);
+    } else if (operation === 'dec') {
+      setCurrPage(currPage - 4);
+    }
+  };
 
   return (
     <>
       {productsAPI.length !== 0 ? (
         <>
-          <div className="product-item-1">
+          <div
+            className="product-item-1"
+            onMouseEnter={() => {
+              setIsHoveringP1(true);
+            }}
+            onMouseLeave={() => {
+              setIsHoveringP1(false);
+            }}
+          >
             {productsAPI[currPage] ? (
-              <Product image={P1} productDetail={productsAPI[currPage]} />
+              <Product
+                image={P1}
+                productDetail={productsAPI[currPage]}
+                isHovering={isHoveringP1}
+              />
             ) : (
-              { OutOfProducts }
-            )}
-          </div>
-          <div className="product-item-2">
-            {productsAPI[currPage + 1] ? (
-              <Product image={P2} productDetail={productsAPI[currPage + 1]} />
-            ) : (
-              { OutOfProducts }
-            )}
-          </div>
-          <div className="product-item-3">
-            {productsAPI[currPage + 2] ? (
-              <Product image={P3} productDetail={productsAPI[currPage + 2]} />
-            ) : (
-              { OutOfProducts }
-            )}
-          </div>
-          <div className="product-item-4">
-            {productsAPI[currPage + 3] ? (
-              <Product image={P4} productDetail={productsAPI[currPage + 3]} />
-            ) : (
-              { OutOfProducts }
+              <div>We're out but we hope you liked something!</div>
             )}
           </div>
           <div
-            className="product-pages"
-            onClick={() => {
-              setCurrPage(currPage + 4);
+            className="product-item-2"
+            onMouseEnter={() => {
+              setIsHoveringP2(true);
             }}
-            onKeyPress={() => {
-              setCurrPage(currPage + 4);
+            onMouseLeave={() => {
+              setIsHoveringP2(false);
             }}
-            role="button"
-            tabIndex="0"
           >
-            Total pages: {Math.floor(productsAPI.length / 4) + 1}
+            {productsAPI[currPage + 1] ? (
+              <Product
+                image={P2}
+                productDetail={productsAPI[currPage + 1]}
+                isHovering={isHoveringP2}
+              />
+            ) : (
+              <div>We're out but we hope you liked something!</div>
+            )}
+          </div>
+          <div
+            className="product-item-3"
+            onMouseEnter={() => {
+              setIsHoveringP3(true);
+            }}
+            onMouseLeave={() => {
+              setIsHoveringP3(false);
+            }}
+          >
+            {productsAPI[currPage + 2] ? (
+              <Product
+                image={P3}
+                productDetail={productsAPI[currPage + 2]}
+                isHovering={isHoveringP3}
+              />
+            ) : (
+              <div>We're out but we hope you liked something!</div>
+            )}
+          </div>
+          <div
+            className="product-item-4"
+            onMouseEnter={() => {
+              setIsHoveringP4(true);
+            }}
+            onMouseLeave={() => {
+              setIsHoveringP4(false);
+            }}
+          >
+            {productsAPI[currPage + 3] ? (
+              <Product
+                image={P4}
+                productDetail={productsAPI[currPage + 3]}
+                isHovering={isHoveringP4}
+              />
+            ) : (
+              <div>We're out but we hope you liked something!</div>
+            )}
+          </div>
+
+          <div className="product-pages">
+            <PageNumber
+              onClickHandler={changePageNumber}
+              currPage={currPage + 1}
+              totalPages={totalPages}
+            />
           </div>
           <div className="product-trends">New Popular</div>
         </>

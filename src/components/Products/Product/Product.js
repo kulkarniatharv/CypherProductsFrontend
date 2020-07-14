@@ -1,35 +1,70 @@
 import React, { useState } from 'react';
+import './Product.css';
 import PropTypes from 'prop-types';
 import PriceTag from '../../UI_Components/PriceTag';
 
 const styles = {
   NameDescHide: {
-    display: 'none',
+    opacity: '0',
+  },
+  NameDescShow: {
+    opacity: '1',
   },
 };
 
-const animationClass = 'animate__animated animate__fadeInDown';
+const animationClassFID = 'animate__animated animate__fadeInDown';
+const animationClassFIU = 'animate__animated animate__fadeInUp';
 
 const Product = props => {
-  const { productDetail, image } = props;
-
-  const [isHovering, setIsHovering] = useState(false);
+  const { productDetail, image, isHovering } = props;
 
   return (
     <>
       <div
-        className={`product-name ${isHovering ? animationClass : ''}`}
-        style={isHovering ? {} : { ...styles.NameDescHide }}
-      >
-        {productDetail.name}
-      </div>
+        style={
+          isHovering
+            ? {
+                backgroundImage: `url(${image})`,
+                backgroundRepeat: `no-repeat`,
+                height: '100%',
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                animation: 'pulse',
+                animationDuration: '500ms',
+              }
+            : {
+                backgroundImage: `url(${image})`,
+                backgroundRepeat: `no-repeat`,
+                height: '100%',
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+              }
+        }
+      />
       <div
+        className={`product-name ${isHovering ? animationClassFID : ''}`}
+        style={
+          isHovering ? { ...styles.NameDescShow } : { ...styles.NameDescHide }
+        }
+      >
+        <span style={{ fontFamily: 'FiraSans-Medium', fontSize: '1rem' }}>
+          {productDetail.name}
+        </span>
+      </div>
+      {/* <div
         className={`product-description ${isHovering ? animationClass : ''}`}
-        style={isHovering ? {} : { ...styles.NameDescHide }}
+        style={
+          isHovering ? { ...styles.NameDescShow } : { ...styles.NameDescHide }
+        }
       >
         {productDetail.description}
-      </div>
-      <div className="product-price">
+      </div> */}
+      <div
+        className={`product-price ${isHovering ? animationClassFIU : ''}`}
+        style={
+          isHovering ? { ...styles.NameDescShow } : { ...styles.NameDescHide }
+        }
+      >
         <PriceTag
           classes="animate-me"
           passedStyles={{
@@ -42,17 +77,14 @@ const Product = props => {
           size="3"
         />
       </div>
-      <img
+
+      {/* <img
+        style={{ position: 'relative' }}
         src={image}
-        alt="Shoe"
-        style={{ height: '10rem', width: '10rem' }}
-        onMouseEnter={() => {
-          setIsHovering(true);
-        }}
-        onMouseLeave={() => {
-          setIsHovering(false);
-        }}
-      />
+        alt={productDetail.name}
+        height="100%"
+        width="100%"
+      /> */}
     </>
   );
 };
@@ -60,6 +92,7 @@ const Product = props => {
 Product.propTypes = {
   productDetail: PropTypes.object,
   image: PropTypes.string,
+  isHovering: PropTypes.bool,
 };
 
 export default Product;
