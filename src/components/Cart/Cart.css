@@ -1,0 +1,21 @@
+.discount {
+  position: relative;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cart {
+  position: relative;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.credits {
+  position: absolute;
+  top: 85%;
+  left: 95%;
+  transform: translateX(-50%);
+  transform: rotate(90deg);
+}

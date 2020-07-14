@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Product from './Product/Product';
 import PageNumber from './PageNumber/PageNumber';
+import Trends from './Trends/Trends';
+import NoItem from './NoItem';
 
 // importing images
 import P1 from '../../images/p1.png';
@@ -83,7 +85,7 @@ const Products = () => {
                 isHovering={isHoveringP1}
               />
             ) : (
-              <div>We're out but we hope you liked something!</div>
+              <NoItem />
             )}
           </div>
           <div
@@ -102,7 +104,7 @@ const Products = () => {
                 isHovering={isHoveringP2}
               />
             ) : (
-              <div>We're out but we hope you liked something!</div>
+              <NoItem />
             )}
           </div>
           <div
@@ -121,7 +123,7 @@ const Products = () => {
                 isHovering={isHoveringP3}
               />
             ) : (
-              <div>We're out but we hope you liked something!</div>
+              <NoItem />
             )}
           </div>
           <div
@@ -140,7 +142,7 @@ const Products = () => {
                 isHovering={isHoveringP4}
               />
             ) : (
-              <div>We're out but we hope you liked something!</div>
+              <NoItem />
             )}
           </div>
 
@@ -151,10 +153,14 @@ const Products = () => {
               totalPages={totalPages}
             />
           </div>
-          <div className="product-trends">New Popular</div>
+          <div className="product-trends">
+            <Trends />
+          </div>
         </>
       ) : (
-        <div>Loading the data...</div>
+        <div style={{ fontFamily: 'FiraSans-Bold', fontSize: '1.5rem' }}>
+          Swapping time and space...
+        </div>
       )}
     </>
   );

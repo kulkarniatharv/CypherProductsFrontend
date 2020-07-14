@@ -10,6 +10,12 @@ const styles = {
   NameDescShow: {
     opacity: '1',
   },
+  shoeDisplayImg: {
+    backgroundRepeat: `no-repeat`,
+    height: '100%',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+  },
 };
 
 const animationClassFID = 'animate__animated animate__fadeInDown';
@@ -24,21 +30,12 @@ const Product = props => {
         style={
           isHovering
             ? {
+                ...styles.shoeDisplayImg,
                 backgroundImage: `url(${image})`,
-                backgroundRepeat: `no-repeat`,
-                height: '100%',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
                 animation: 'pulse',
                 animationDuration: '500ms',
               }
-            : {
-                backgroundImage: `url(${image})`,
-                backgroundRepeat: `no-repeat`,
-                height: '100%',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-              }
+            : { ...styles.shoeDisplayImg, backgroundImage: `url(${image})` }
         }
       />
       <div

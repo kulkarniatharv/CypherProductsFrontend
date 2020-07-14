@@ -1,0 +1,10 @@
+.trends {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-around;
+  height: 100%;
+  font-size: 1.5rem;
+  font-family: 'FiraSans-Bold';
+}

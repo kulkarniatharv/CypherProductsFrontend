@@ -89,10 +89,11 @@ const Navbar = props => {
           slideInMenu
             ? {
                 ...styles.slideIn,
+                backgroundColor: '#fefefe',
                 backgroundImage: `url(${menuBG})`,
                 backgroundRepeat: `no-repeat`,
                 height: '100%',
-                backgroundPosition: 'center',
+                backgroundPosition: 'right bottom',
                 backgroundSize: 'cover',
               }
             : null

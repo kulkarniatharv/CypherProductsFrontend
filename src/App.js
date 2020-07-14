@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import HeroProduct from './components/hero_product/HeroProduct';
 import Product from './components/Products/Products';
+import Cart from './components/Cart/Cart';
 
 const heroImage = require('./images/Hero_image.png');
 
@@ -27,7 +28,9 @@ function App() {
       <div className="products">
         <Product />
       </div>
-      <div className="cart-info">Cart Info</div>
+      <div className="cart-info">
+        <Cart />
+      </div>
     </div>
   );
 }
